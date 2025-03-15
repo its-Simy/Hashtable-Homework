@@ -1,5 +1,7 @@
+/**
+ * This is the class that contains the linked lists used for the buckets for separate chaining
+ */
 public class List {
-//Add the necessary data members
     private Node head;
     private int size;
 
@@ -14,6 +16,7 @@ public class List {
 
     /**
      *Copy Constructor
+     * Should make a deep copy of the instance list
      */
     public List(List list){
 

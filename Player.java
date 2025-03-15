@@ -1,5 +1,6 @@
+import java.util.Objects;
 
-    /**
+/**
      * This is the Player class that are essentially the nodes for the heap implementation.
      * Each player contains their name and score.
      */
@@ -37,6 +38,15 @@
         }
 
         /**
+         * returns a hash code based on the name of the player
+         * This will be used in order to properly place players into buckets within the hashtable
+         */
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(name);
+    }
+
+    /**
          *Returns the score of the player
          */
         public int getScore() {
