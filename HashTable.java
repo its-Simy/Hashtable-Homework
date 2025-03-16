@@ -1,6 +1,6 @@
 public class HashTable {
     //Add the data members
-    private Player[] hashTable;
+    private List[] hashTable;
     private int numBuckets;
     private int occubiedPlaces;
 
@@ -8,7 +8,7 @@ public class HashTable {
      * Default Constructor
      */
     public HashTable(){
-        hashTable= new Player[10];
+        hashTable= new List[10];
         numBuckets = hashTable.length;
         occubiedPlaces = 0;
     }
@@ -18,7 +18,7 @@ public class HashTable {
      */
     public HashTable(HashTable hash){
         this.numBuckets = hash.numBuckets;
-        this.hashTable= new Player[numBuckets];
+        this.hashTable= new List[numBuckets];
         this.occubiedPlaces= hash.occubiedPlaces;
     }
 
@@ -35,12 +35,12 @@ public class HashTable {
      */
     public void add(Player p){
         //this will determine which bucket they would go in
-        int bucket = p.hashCode() % numBuckets;
+        int placement = hash(p);
 
         //if the load factor is over .75, then it will resize
         if((double) (occubiedPlaces/numBuckets) > .75){
             resize();
-            hashTable[bucket]= p;
+            //hashTable[placement]= p;
         }
         //if false, then it will insert the player into the designated bucket
         else{
@@ -72,6 +72,14 @@ public class HashTable {
      */
     private void resize(){
 
+    }
+
+    /**
+     *Should return the hash value in which the specific bucket the player will be placed in
+     */
+    private int hash(Player p){
+        int hash = p.hashCode();
+        return hash % numBuckets;
     }
 
 
