@@ -19,7 +19,19 @@ public class List {
      * Should make a deep copy of the instance list
      */
     public List(List list){
+        head = null;
+        size = 0;
+        if(list.head == null)
+            return;
 
+        Node tracker = list.head;
+        while(tracker != null){
+
+            Player copied_Player = tracker.player.createClone();
+
+            this.add(copied_Player);
+            tracker = tracker.next;
+        }
     }
 
     /**
@@ -40,7 +52,7 @@ public class List {
             head = new Node(p);
             head.next = temp;
         }
-
+        size++;
     }
 
     /**
@@ -49,6 +61,7 @@ public class List {
     public Player find(String name){
         Node iteration = head;
         for(int i = 0; i < size; i++){
+            //if the players name is equal to the name that is being looked for, then stop the loop, and return that player
             if(iteration.getPlayer().getName().equals(name))
                 break;
 
@@ -57,7 +70,13 @@ public class List {
         return iteration.getPlayer();
     }
 
+    /**
+     *Will return the size of the linked list
+     */
+    public int getSize(){
+        return size;
+    }
 
 
 
-}
+}//end of the list class

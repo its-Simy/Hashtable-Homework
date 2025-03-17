@@ -1,3 +1,7 @@
+/**
+ * This will be a hashtable of lists that will allow for separate chaining to avoid collisions when adding players
+ *
+ */
 public class HashTable {
     //Add the data members
     private List[] hashTable;
@@ -35,17 +39,15 @@ public class HashTable {
      */
     public void add(Player p){
         //this will determine which bucket they would go in
-        int placement = hash(p);
+        int placement = hashCode(p);
 
-        //if the load factor is over .75, then it will resize
+        //if the load factor is over 75%, then it will resize
         if((double) (occubiedPlaces/numBuckets) > .75){
             resize();
             //hashTable[placement]= p;
         }
-        //if false, then it will insert the player into the designated bucket
-        else{
 
-        }
+
 
     }
 
@@ -56,8 +58,12 @@ public class HashTable {
      * associated with the key is returned
      */
     public Player find(String name){
-        return null;
-    }
+        Player p = null;
+        for(int i = 0; i < numBuckets; i++){
+            p = hashTable[i].find(name);
+        }
+        return p;
+    }//end of find method
 
     /**
      * Prints all data in the hash table.
@@ -65,26 +71,31 @@ public class HashTable {
      */
     public void show(){
 
-    }
+    }//end of show method
 
     /**
      * This will resize the current hash table by creating a new one
+     * along with rehashing all the current players inside the hashtable into the new bucket array
+     * Lastly, it will set the new array made into the one for this hashtable,
+     * along with setting a new value to num buckets.
      */
     private void resize(){
+        List[] newHashTable= new List[numBuckets * 2];//creates new hashtable with double the size
+        for(int i=0; i<numBuckets; i++){
+            //for(int j=0; j < hashTable[i].; j++){}
+        }
 
-    }
+    }//end of resize method
 
     /**
      *Should return the hash value in which the specific bucket the player will be placed in
      */
-    private int hash(Player p){
+    private int hashCode(Player p){
         int hash = p.hashCode();
         return hash % numBuckets;
-    }
+    }//end of hash method
 
 
 
 
-
-
-}
+}//end of the hashTable class
