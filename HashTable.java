@@ -14,6 +14,9 @@ public class HashTable {
     public HashTable(){
         hashTable= new List[10];
         numBuckets = hashTable.length;
+        for(int i=0; i < numBuckets; i++){
+            hashTable[i] = new List();
+        }
         occubiedPlaces = 0;
     }
 
@@ -46,8 +49,7 @@ public class HashTable {
             resize();
             //hashTable[placement]= p;
         }
-
-
+        hashTable[placement].add(p);//adds player to the specified bucket list
 
     }
 
@@ -70,6 +72,9 @@ public class HashTable {
      * It should show data by bucket
      */
     public void show(){
+        for(int i = 0; i < numBuckets; i++){
+            hashTable[i].printList();
+        }
 
     }//end of show method
 

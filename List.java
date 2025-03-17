@@ -77,6 +77,15 @@ public class List {
         return size;
     }
 
+    public void printList(){
+        Node iteration = head;
+        for(int i = 0; i < size; i++){
+            System.out.println(iteration.getPlayer().getName() + "'s score is " + iteration.player.getScore());
+            iteration = iteration.next;
+        }
+
+    }
+
 
 
 }//end of the list class
