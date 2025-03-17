@@ -39,7 +39,7 @@ public class List {
      * it will call the copy constructor using the current list
      * then will return the new list that was made.
      */
-    private List createClone(){ return new List(List.this); }
+    public List createClone(){ return new List(List.this); }
 
     /**
      * This should all a player to the linked list
@@ -61,12 +61,14 @@ public class List {
     public Player find(String name){
         Node iteration = head;
         for(int i = 0; i < size; i++){
-            //if the players name is equal to the name that is being looked for, then stop the loop, and return that player
+            //if the players name is equal to the name that is being looked for
+            // then stop the loop, and return that player
             if(iteration.getPlayer().getName().equals(name))
                 break;
 
             iteration = iteration.next;
         }
+
         return iteration.getPlayer();
     }
 

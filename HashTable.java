@@ -26,13 +26,16 @@ public class HashTable {
     public HashTable(HashTable hash){
         this.numBuckets = hash.numBuckets;
         this.hashTable= new List[numBuckets];
+        for(int i=0; i < numBuckets; i++){
+            this.hashTable[i] = new List(hash.hashTable[i].createClone());
+        }
         this.occubiedPlaces= hash.occubiedPlaces;
     }
 
     /**
      *returns a deep copy of the current instance
      */
-    private HashTable createClone(){
+    public HashTable createClone(){
         return new HashTable(HashTable.this);
     }
 
@@ -42,12 +45,14 @@ public class HashTable {
      */
     public void add(Player p){
         //this will determine which bucket they would go in
-        int placement = hashCode(p);
+        int placement = Math.abs(hashCode(p,numBuckets));
+        occubiedPlaces++;
+        double loadfactor = (double) occubiedPlaces / numBuckets;
 
         //if the load factor is over 75%, then it will resize
-        if((double) (occubiedPlaces/numBuckets) > .75){
+        if(loadfactor > .75){
             resize();
-            //hashTable[placement]= p;
+            placement = Math.abs(hashCode(p,numBuckets));
         }
         hashTable[placement].add(p);//adds player to the specified bucket list
 
@@ -62,7 +67,8 @@ public class HashTable {
     public Player find(String name){
         Player p = null;
         for(int i = 0; i < numBuckets; i++){
-            p = hashTable[i].find(name);
+            if(hashTable[i] != null)
+                p = hashTable[i].find(name);
         }
         return p;
     }//end of find method
@@ -86,18 +92,24 @@ public class HashTable {
      */
     private void resize(){
         List[] newHashTable= new List[numBuckets * 2];//creates new hashtable with double the size
-        for(int i=0; i<numBuckets; i++){
-            //for(int j=0; j < hashTable[i].; j++){}
+        int replacementBuckets= newHashTable.length;//creates a new number of buckets for the new rehashing
+        for(int i=0; i < replacementBuckets; i++){
+            newHashTable[i] = new List();
         }
+        for(int i = 0; i < numBuckets; i++){
+            newHashTable[i]= hashTable[i];
+        }
+        this.numBuckets = replacementBuckets;
+        this.hashTable= newHashTable;
 
     }//end of resize method
 
     /**
      *Should return the hash value in which the specific bucket the player will be placed in
      */
-    private int hashCode(Player p){
+    private int hashCode(Player p, int numberOfBuckets){
         int hash = p.hashCode();
-        return hash % numBuckets;
+        return hash % numberOfBuckets;
     }//end of hash method
 
 
