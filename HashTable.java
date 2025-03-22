@@ -96,8 +96,20 @@ public class HashTable {
         for(int i=0; i < replacementBuckets; i++){
             newHashTable[i] = new List();
         }
+
+        occubiedPlaces= 0;
+
         for(int i = 0; i < numBuckets; i++){
-            newHashTable[i]= hashTable[i];
+
+            Player p = hashTable[i].remove();
+            while(p != null) {
+                int placement = Math.abs(hashCode(p, numBuckets));
+                occubiedPlaces++;
+
+                newHashTable[placement].add(p);
+                p = hashTable[i].remove();
+            }
+
         }
         this.numBuckets = replacementBuckets;
         this.hashTable= newHashTable;

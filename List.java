@@ -60,6 +60,8 @@ public class List {
      */
     public Player find(String name){
         Node iteration = head;
+        if(iteration == null)
+            return null;
         for(int i = 0; i < size; i++){
             //if the players name is equal to the name that is being looked for
             // then stop the loop, and return that player
@@ -87,6 +89,20 @@ public class List {
         }
 
     }
+
+    /**This will remove the head of the list
+     *and change the head to the next player only if there is one
+     * if not then it returns null
+     */
+    public Player remove(){
+        if(head == null)
+            return null;
+
+        Node temp = head;
+        head = head.next;
+
+        return temp.getPlayer();
+    }//end of the remove method
 
 
 

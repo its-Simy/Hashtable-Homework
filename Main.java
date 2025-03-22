@@ -50,8 +50,9 @@ public class Main {
 
         System.out.println("\n The following are the players inside of the hashtable \n");
         //prints out all the players in the hashtable
-        //hashTable.show();
+        hashTable.show();
 
+        /*
         HashTable hashTable2 = new HashTable(hashTable);
         System.out.println("\n The following are the players inside of the copied hashtable using copy constructor\n");
         //hashTable2.show();
@@ -62,8 +63,10 @@ public class Main {
         //hashTable3.show();
         //System.out.println("This was the one that was copied\n");
         //hashTable2.show();
+ */
+        System.out.println(hashTable.find("Matthew Sanders"));
 
-        System.out.println(hashTable3.find("Matthew Sanders"));
+
 
 
 
