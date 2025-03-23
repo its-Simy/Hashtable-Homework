@@ -66,9 +66,12 @@ public class HashTable {
      */
     public Player find(String name){
         Player p = null;
+
         for(int i = 0; i < numBuckets; i++){
-            if(hashTable[i] != null)
+
+            if(hashTable[i].find(name) != null)
                 p = hashTable[i].find(name);
+
         }
         return p;
     }//end of find method

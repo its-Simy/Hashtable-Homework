@@ -1,4 +1,5 @@
 import java.io.*;
+import java.util.ArrayList;
 
 public class Main {
 
@@ -32,9 +33,9 @@ public class Main {
         try {
             BufferedReader reader = new BufferedReader(new FileReader("info.txt"));
             String line = reader.readLine();
-            String name = null;
+            String name = "";
             int score = 0;
-            while(line != null) {
+            while(!(line.equals(""))){
                 //if the line is a Name, then it should, cast that as the name
                     name = line;
                     line = reader.readLine();
@@ -64,7 +65,26 @@ public class Main {
         //System.out.println("This was the one that was copied\n");
         //hashTable2.show();
  */
-        System.out.println(hashTable.find("Matthew Sanders"));
+        System.out.println();
+
+        //System.out.println(hashTable.find("Matthew Sanders").getScore());
+
+
+        List list = new List();
+
+        Player p1 = new Player("Matthew Sanders",1);
+        Player p2 = new Player("Joey P",11);
+
+        list.add(p1);
+        list.add(p2);
+
+
+        System.out.println(list.find("Matthew Sanders"));
+
+
+
+
+
 
 
 
