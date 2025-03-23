@@ -66,13 +66,14 @@ public class HashTable {
      */
     public Player find(String name){
         Player p = null;
+        Player finder = new Player(name,5);//creates temporary player that will be used to find hashcode
 
-        for(int i = 0; i < numBuckets; i++){
+        int code_of_player = Math.abs(finder.hashCode());//hashcode of the player we are trying to find
+        int bucket_placement = code_of_player % numBuckets;
 
-            if(hashTable[i].find(name) != null)
-                p = hashTable[i].find(name);
+        List bucket = hashTable[bucket_placement];
+        p = bucket.find(name);
 
-        }
         return p;
     }//end of find method
 
@@ -106,7 +107,7 @@ public class HashTable {
 
             Player p = hashTable[i].remove();
             while(p != null) {
-                int placement = Math.abs(hashCode(p, numBuckets));
+                int placement = Math.abs(hashCode(p, replacementBuckets));
                 occubiedPlaces++;
 
                 newHashTable[placement].add(p);

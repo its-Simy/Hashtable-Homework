@@ -59,10 +59,6 @@ public class List {
      *This will return the player with the same name as the one in the signature
      */
     public Player find(String name){
-        Player finder = new Player(name,5);//creates temporary player that will be used to find hashcode
-
-        int code = finder.hashCode();//hashcode of the player we are trying to find
-
 
         Node iteration = head;
         if(iteration == null)
@@ -70,7 +66,7 @@ public class List {
         for(int i = 0; i < size; i++){
             //if the players name is equal to the name that is being looked for
             // then stop the loop, and return that player
-            if(iteration.getPlayer().hashCode() == code)
+            if(iteration.getPlayer().getName().equals(name))
                 break;
 
             iteration = iteration.next;

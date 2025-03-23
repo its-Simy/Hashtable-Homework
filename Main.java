@@ -49,9 +49,12 @@ public class Main {
             e.printStackTrace();
         }
 
+
         System.out.println("\n The following are the players inside of the hashtable \n");
         //prints out all the players in the hashtable
         hashTable.show();
+
+
 
         /*
         HashTable hashTable2 = new HashTable(hashTable);
@@ -67,31 +70,8 @@ public class Main {
  */
         System.out.println();
 
-        //System.out.println(hashTable.find("Matthew Sanders").getScore());
-
-
-        List list = new List();
-
-        Player p1 = new Player("Matthew Sanders",1);
-        Player p2 = new Player("Joey P",11);
-
-        list.add(p1);
-        list.add(p2);
-
-
-        System.out.println(list.find("Matthew Sanders"));
-
-
-
-
-
-
-
-
-
-
-
-
+        System.out.println(hashTable.find("Matthew Sanders").getScore());
+        
 
 
     }//end of the main method
