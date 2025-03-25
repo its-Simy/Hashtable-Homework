@@ -1,7 +1,14 @@
 import java.io.*;
 
+/**
+ * This is the general class that will invoke the hashtable and its methods within the main method
+ */
 public class Main {
 
+    /**
+     *This method will read the text file in order to create player objects, hashtable objects,
+     *  * and show examples of the hashtable adding/resizing, copy constructor, createClone method, and find method.
+     */
     public static void main(String[] args) {
 
         HashTable hashTable = new HashTable();

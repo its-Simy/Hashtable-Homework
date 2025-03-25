@@ -9,7 +9,7 @@ public class HashTable {
     private int occubiedPlaces;
 
     /**
-     * Default Constructor
+     * Default Constructor will initialize a hashtable according to default parameters
      */
     public HashTable(){
         hashTable= new List[10];
@@ -21,7 +21,7 @@ public class HashTable {
     }
 
     /**
-     * Copy Constructor
+     * Copy Constructor will initialize a deep copy of the hashtable object provided
      */
     public HashTable(HashTable hash){
         this.numBuckets = hash.numBuckets;

@@ -82,6 +82,9 @@ public class List {
         return size;
     }
 
+    /**
+     * This function will print the current list
+     */
     public void printList(){
         Node iteration = head;
         for(int i = 0; i < size; i++){

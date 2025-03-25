@@ -1,6 +1,6 @@
 import java.util.Objects;
 
-/**
+    /**
      * This is the Player class that are essentially the nodes for the heap implementation.
      * Each player contains their name and score.
      */
